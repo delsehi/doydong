@@ -132,8 +132,6 @@ typings/
 # Next.js build output
 .next
 
-build
-
 # Nuxt.js build / generate output
 .nuxt
 dist
@@ -175,3 +173,9 @@ tmp/
 temp/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,node
+
+
+
+build
+
+ormconfig.json
