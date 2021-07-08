@@ -2,8 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 
 function SetupOrganization() {
-    const searchField = document.getElementById('searchOrg')
-    const searchBtn = document.getElementById('searchBtn')
     const [query, setQuery] = useState('')
     const [searchResult, setSearchResult] = useState<any>([]);
 
@@ -11,12 +9,12 @@ function SetupOrganization() {
         fetch(`http://localhost:8080/api/org/${query}`).then(res => res.json().then(data => {
             setSearchResult(data)
         }))
-        
     }
 
     return (
         <div>
             <div className="hero is-primary is-small">
+                
                 <div className="hero-body">
                     <div className="title">Doydong</div>
                 </div>
@@ -39,8 +37,9 @@ function SetupOrganization() {
                         </div>
                         <ul>
                             {
-                            searchResult.map( (el:any) => {
-                                return (<li>{el.org_name}</li>)
+                            searchResult.map( (org: any) => {
+                                return (<li className="tag is-large is-primary">
+                                    <a href={`/join/${org.org_id}`} >{org.org_name}</a></li>)
                             })
                             }
                         </ul>
