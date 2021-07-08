@@ -30,15 +30,25 @@ authRouter.get('/protected', (req: any, res, next) => {
 
 
 authRouter.post('/register', async (req, res, next) => {
-    console.log('Register....')
-    const [salt, hash] = createHashAndSalt(req.body.password)
-    const user = new User()
-    user.email = req.body.email
-    user.hash = hash
-    user.salt = salt
-    user.name = req.body.name
-    console.log('saving new user')
-    console.log(user)
+    console.log('Register. Req.body: ')
+    console.log(req.body)
+    let user;
+    try {
+        console.log(req.body.email, req.body.name, req.body.password)  
+        const [salt, hash] = createHashAndSalt(req.body.password)
+        user = new User()
+        user.email = req.body.email
+        
+        user.hash = hash
+        user.salt = salt
+        user.name = req.body.name
+        console.log('saving new user')
+        console.log(user)
+        
+    } catch (error) {
+        console.error(error)
+        return res.status(400).send('You did something wrong. ')
+    }
 
     getRepository(User).save(user).then(() => {
         res.status(201).send('Account created.')
