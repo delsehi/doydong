@@ -5,8 +5,6 @@ import { Organization } from "../entity/Organization";
 
 const apiRouter = express.Router()
 
-
-
 apiRouter.get('/org/:orgname', async (req, res) => {
     const orgname = req.params.orgname.toLowerCase()
     const orgRepo = getRepository(Organization)
@@ -21,10 +19,6 @@ apiRouter.get('/lesson/:lessonID', async (req: any, res) => {
     console.log('Got a request for a lesson')
     const lessonID = req.params.lessonID
     const lessonRepo = getRepository(Lesson)
-
-    console.log(req)
-
-    res.cookie('delficookie', 'Cookienumber' + Math.floor(Math.random() * 100))
     const lesson = await lessonRepo.findOne({lesson_id: lessonID})
     res.send(lesson)
 })
