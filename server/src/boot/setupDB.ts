@@ -8,7 +8,7 @@ const createConnectionToDB = async () => {
         host: process.env.TYPEORM_HOST,
         port: parseInt(process.env.TYPEORM_PORT || '5432'),
         synchronize: true,
-        entities: ["src/entity/**/*.{js,ts}"]
+        entities: ["src/entity/**/*.{js,ts}", "./build/src/entity/**/*.js"]
     })
 }
 

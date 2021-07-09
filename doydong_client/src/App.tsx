@@ -8,7 +8,6 @@ import PageNotFound from './Components/PageNotFound';
 
 function App() {
 
-
   return (
     <BrowserRouter><Switch>
       <Route path="/" exact component={Start} />
