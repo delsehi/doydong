@@ -20,18 +20,18 @@ function NavBarHero() {
 
                         <div id="navbarMenuHeroC" className="navbar-menu">
                             <div className="navbar-end">
-                                <a className="navbar-item is-active">
+                                <a href="/" className="navbar-item is-active">
                                     Home
                                 </a>
                                 <a className="navbar-item">
                                     Examples
                                 </a>
-                                <a className="navbar-item">
-                                    Documentation
+                                <a href="/dashboard" className="navbar-item">
+                                    Dashboard
                                 </a>
                                 <span className="navbar-item">
-                                    <a className="button is-link">
-                                        <span>Sign in</span>
+                                    <a href="/login" className="button is-link">
+                                        <span>Log in</span>
                                     </a>
                                 </span>
                             </div>

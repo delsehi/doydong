@@ -7,8 +7,8 @@ export class Organization{
     org_id !: number
     @Column({length: 60})
     org_name !: string
-  //  @Column({length: 1500})
-  //  description !: string
+    @Column({length: 1500})
+    org_description !: string
     @ManyToMany(type => User, user => user.owns)
     owners !: User[]
 

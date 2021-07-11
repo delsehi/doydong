@@ -13,6 +13,7 @@ function Start() {
                     <div className="container ">
                         <h1 className="title is-1">Doydong</h1>
                         <p className="subtitle is-3">Create courses for your organization.</p>
+
                         <br />
                     </div>
                         

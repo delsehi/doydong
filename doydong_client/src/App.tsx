@@ -5,6 +5,8 @@ import SetupOrganization from './Components/SetupOrganization';
 import Start from './Components/Start';
 import Footer from './Components/Footer';
 import PageNotFound from './Components/PageNotFound';
+import Login from './Components/Login';
+import CreateOrg from './Components/CreateOrg';
 
 function App() {
 
@@ -12,7 +14,9 @@ function App() {
     <BrowserRouter><Switch>
       <Route path="/" exact component={Start} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/login" component={Login} />
       <Route path="/setuporganization" component={SetupOrganization} />
+      <Route path="/createorganization" component={CreateOrg} />
       <Route path="*" component={PageNotFound} />
       
     </Switch>
