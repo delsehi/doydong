@@ -2,20 +2,21 @@ import React from 'react'
 
 function NavBarHero() {
     return (
-        <div className="hero-head">
-            <nav className="navbar">
-                <div className="container">
-                    <div className="navbar-brand">
-                        <a href="/" className="navbar-item">
-                            <img className="image" src="/frog.png" alt="logo" />
-                            <p className="title">Doydong</p>
-                        </a>
+        <div className="hero is-primary">
+            <div className="hero-head">
+                <nav className="navbar">
+                    <div className="container">
+                        <div className="navbar-brand">
+                            <a href="/" className="navbar-item">
+                                <img className="image" src="/frog.png" alt="logo" />
+                                <p className="title">Doydong</p>
+                            </a>
 
-                        <span className="navbar-burger" data-target="navbarMenuHeroC">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
+                            <span className="navbar-burger" data-target="navbarMenuHeroC">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
                         </div>
 
                         <div id="navbarMenuHeroC" className="navbar-menu">
@@ -23,8 +24,8 @@ function NavBarHero() {
                                 <a href="/" className="navbar-item is-active">
                                     Home
                                 </a>
-                                <a className="navbar-item">
-                                    Examples
+                                <a href="/setuporganization" className="navbar-item">
+                                    Find Organization
                                 </a>
                                 <a href="/dashboard" className="navbar-item">
                                     Dashboard
@@ -39,8 +40,9 @@ function NavBarHero() {
                         </div>
 
 
-                </div>
-            </nav>
+                    </div>
+                </nav>
+            </div>
         </div>
     )
 }

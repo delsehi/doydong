@@ -7,6 +7,7 @@ import Footer from './Components/Footer';
 import PageNotFound from './Components/PageNotFound';
 import Login from './Components/Login';
 import CreateOrg from './Components/CreateOrg';
+import Lesson from './Components/Prototypes/Lesson';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" exact component={Start} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/login" component={Login} />
+      <Route path="/lessonproto" component={Lesson} />
       <Route path="/setuporganization" component={SetupOrganization} />
       <Route path="/createorganization" component={CreateOrg} />
       <Route path="*" component={PageNotFound} />

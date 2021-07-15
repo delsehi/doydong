@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 
 function SignUp() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [signUpSuccess, setSignUpSuccess] = useState(false)
 
     const postRegister = () => {
         const credentials = JSON.stringify({
@@ -19,9 +21,12 @@ function SignUp() {
             body: credentials,
             headers: { "Content-Type": "application/json" },
         }).then(res => {
-            console.log(res)
+            console.log('Response from post user:', res)
+            setSignUpSuccess(true)
         }).catch(err => console.error(err))
     }
+
+     if (signUpSuccess) return <Redirect to="/setuporganization" />
 
     return (
         <div className="container">

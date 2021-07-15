@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import NavbarHero from './NavbarHero';
 
 function SetupOrganization() {
     const [query, setQuery] = useState('')
@@ -12,12 +13,7 @@ function SetupOrganization() {
 
     return (
         <div>
-            <div className="hero is-primary is-small">
-                
-                <div className="hero-body">
-                    <div className="title">Doydong</div>
-                </div>
-            </div>
+            <NavbarHero />
             <div className="container has-text-centered">
                 <div className="section">
                     <div className="box">
@@ -45,7 +41,7 @@ function SetupOrganization() {
 
                         <div className="section">
                             <h2 className="title is-4">Or create a new one</h2>
-                            <a href="/createOrg" className="button is-link">Create organization</a>
+                            <a href="/createorganization" className="button is-link">Create organization</a>
 
                         </div>
 

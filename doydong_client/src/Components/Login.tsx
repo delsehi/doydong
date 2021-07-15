@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import NavbarHero from './NavbarHero';
 
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loginSuccess, setLoginSuccess] = useState(false)
 
     const postLogin = () => {
         const credentials = JSON.stringify({
@@ -17,7 +19,9 @@ function Login() {
             body: credentials,
             headers: { "Content-Type": "application/json" },
         }).then(res => {
-            console.log(res)
+            console.log('Response from loggin in: ', res)
+            setLoginSuccess(true)
+
         }).catch(err => console.error(err))
     }
 
@@ -27,6 +31,7 @@ function Login() {
             <NavbarHero />
             </div>
             <div className="section">
+            {loginSuccess ? <Redirect to='/dashboard' /> : null}
 
             <div className="box has-background-grey-white-ter">
                 <div className="title is-4 has-text-black has-text-centered">Log in</div>

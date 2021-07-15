@@ -8,15 +8,17 @@ function Dashboard() {
 
     return (
         <div>
-            <div className="hero is-primary">
             <NavbarHero />
-            </div>
-                <p>Logged in user: </p>
+
                     {
                         user ? (
-                            <p>{user.name}</p>
+                            <div className="section">
+                                <p className="title is-2">{user.name}</p>
+                            </div>
                         ) : (
-                            null
+                            <div className="section">
+                                <p className="title">You are not logged in.</p>
+                            </div>
                         )
                     }
 

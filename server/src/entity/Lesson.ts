@@ -6,6 +6,8 @@ export class Lesson {
     @PrimaryGeneratedColumn()
     lesson_id!: number
     @Column()
+    title !: string
+    @Column()
     content !: string
     @ManyToOne(type => Course, course => course.lessons)
     course!: Course

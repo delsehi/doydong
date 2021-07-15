@@ -1,5 +1,6 @@
 import express from "express";
 import { getRepository } from 'typeorm'
+import { Course } from "../entity/Course";
 import { Lesson } from "../entity/Lesson";
 import { Organization } from "../entity/Organization";
 import { User } from "../entity/User";
@@ -35,17 +36,49 @@ apiRouter.post('/createorganization', async (req: any, res) => {
             res.status(400).send({ msg: "Could not create organization." })
         }
     } else {
-        res.status(401).send('Unauthorized.')
+        res.status(401).send()
     }
 })
 
+apiRouter.post('/createlesson', async (req: any, res) => {
+    // if (!req.isAuthenticated()) {
+    //     res.status(401).send()
+    // }
+    try {
+        const lesson_title = req.body.lesson_title 
+        const lesson_content = req.body.lesson_content
+        const lesson_courseid = req.body.lesson_courseid
+        const courseRepo = getRepository(Course)
+        const lessonRepo = getRepository(Lesson)
+        const course = await courseRepo.findOneOrFail({course_id: lesson_courseid})
+        const lesson = new Lesson()
+        lesson.title = lesson_title
+        lesson.content = lesson_content
+        lesson.course = course 
+        lessonRepo.save(lesson)
+        console.log('saved lesson: ', lesson)
+        res.status(201).send()
+        
+    } catch (error) {
+        console.error(error)
+        res.status(400).send()
+    }
 
-apiRouter.get('/lesson/:lessonID', async (req: any, res) => {
-    console.log('Got a request for a lesson')
-    const lessonID = req.params.lessonID
-    const lessonRepo = getRepository(Lesson)
-    const lesson = await lessonRepo.findOne({ lesson_id: lessonID })
-    res.send(lesson)
+})
+
+
+apiRouter.get('/lesson/:lessonid', async (req: any, res) => {
+    console.log("Got a request for lesson id: ", req.params.lessonid)
+    try {
+        const lessonID = req.params.lessonid
+        const lessonRepo = getRepository(Lesson)
+        const lesson = await lessonRepo.findOne({ lesson_id: lessonID })
+        if (!lesson) res.status(404).send()
+        console.log("Sending lesson:", lesson)
+        res.send(lesson)
+    } catch (error) {
+        res.status(404).send()
+    }
 })
 
 

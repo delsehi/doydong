@@ -23,9 +23,8 @@ function CreateOrg() {
 
     return (
         <div>
-            <div className="hero is-primary">
             <NavbarHero />
-            </div>
+
             <div className="section">
 
             <div className="box has-background-grey-white-ter">

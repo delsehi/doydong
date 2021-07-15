@@ -10,20 +10,14 @@ const authRouter = express.Router()
 authRouter.get('/google', passport.authenticate('google', { prompt: 'login' }))
 // Login with email and password
 
-const logstuff = (req: any, res: any, next: any) => {
-    console.log("req.body: ", req.body)
-    console.log("req.user: ",req.user)
-    console.log("req.session: ",req.session)
-    next()
-}
 
 const loginResponse = (req: any, res: any) => {
     res.status(200).send({msg: 'You are logged in now'})
 }
 
-authRouter.post('/login', logstuff, passport.authenticate('local'), logstuff, loginResponse)
+authRouter.post('/login', passport.authenticate('local'), loginResponse)
 
-authRouter.get('/getuser', logstuff, (req: any, res) => {
+authRouter.get('/getuser', (req: any, res) => {
     if (req.isAuthenticated()) {
         const userData = {
             name: req.user.name,
