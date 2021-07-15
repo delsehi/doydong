@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Course } from "./Course";
+import { MultipleChoice } from "./Question";
 
 @Entity()
 export class Lesson {
@@ -11,4 +12,6 @@ export class Lesson {
     content !: string
     @ManyToOne(type => Course, course => course.lessons)
     course!: Course
+    @OneToMany(type => MultipleChoice, question => question.lesson)
+    questions!: MultipleChoice[]
 }

@@ -8,14 +8,21 @@ function MultipleChoiceQuestion(props: any) {
         setSelected(e.target.value)
     }
 
+    const returnScore = (callback: any) => {
+        return selected === props.correct
+    }
+
     return (
         <form id="question" className="card">
             <div className="card-content">
-            <h2 className="title is-4">{props.question}</h2>
+            <h2 className="title is-6">{props.question}</h2>
             <div className="control is-flex is-flex-direction-column">
                 <div className="columns">
-                {props.choices.map((choice: any) => {
-                    return <AnswerBox key={choice.ch_id} choice={choice.ch} selected={selected} changeCallback={handleChange} />
+                {props.correct.map((choice: any) => {
+                    return <AnswerBox key={choice} choice={choice} selected={selected} changeCallback={handleChange} />
+                })}
+                {props.incorrect.map((choice: any) => {
+                    return <AnswerBox key={choice} choice={choice} selected={selected} changeCallback={handleChange} />
                 })}
 
                 </div>
